@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blouse Atasan Wanita Viona - MobatMabet Store</title>
+    <!-- Hubungkan CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Bagian Galeri (Kiri) -->
+        <div class="product-gallery">
+            <div class="main-display">
+                <!-- Foto Utama -->
+                <img id="main-img" src="assets/img/blouse-viona-blue.jpeg" alt="Blouse Viona Biru">
+                <!-- Video Utama -->
+                <video id="main-video" controls style="display: none;">
+                    <source id="video-source" src="assets/vid/blouse-viona-blue.mp4" type="video/mp4">
+                    Browser Anda tidak mendukung tag video.
+                </video>
+            </div>
+
+            <!-- Thumbnail Foto & Video -->
+            <div class="thumbnail-list" id="thumbnails">
+                <img src="assets/img/blouse-viona-blue.jpeg" class="thumb active" onclick="changeMedia('img', 'assets/img/blouse-viona-blue.jpeg', this)">
+                <img src="assets/img/blouse-viona-blue2.jpeg" class="thumb" onclick="changeMedia('img', 'assets/img/blouse-viona-blue2.jpeg', this)">
+                <div class="thumb video-thumb" onclick="changeMedia('vid', 'assets/vid/blouse-viona-blue.mp4', this)">
+                    <i class="fa-solid fa-play"></i> Video
+                </div>
+            </div>
+        </div>
+
+        <!-- Bagian Detail Produk (Kanan) -->
+        <div class="product-details">
+            <span class="badge"><i class="fa-solid fa-shield-halved"></i> Belanja aman & terverifikasi di MobatMabet Store</span>
+            
+            <h1 id="product-title">Blouse atasan wanita viona bahan polo linen dan rayon motif - Biru</h1>
+            
+            <div class="price">Rp45.000</div>
+            
+            <div class="meta-info">
+                <span>📦 <strong>Kondisi:</strong> Baru</span>
+                <span>🔥 <strong>Stok:</strong> 55</span>
+                <span>🚚 <strong>Gratis Ongkir</strong></span>
+            </div>
+
+            <hr>
+
+            <!-- Opsi Varian Warna -->
+            <div class="variant-section">
+                <label>Pilih Warna:</label>
+                <div class="color-options">
+                    <button class="color-btn active" onclick="selectColor('Biru')">Biru</button>
+                    <button class="color-btn" onclick="selectColor('Dusty Pink')">Dusty Pink</button>
+                </div>
+            </div>
+
+            <!-- Tombol Transaksi & Katalog -->
+            <div class="action-buttons">
+                <a id="wa-button" href="https://wa.me/6281262419674?text=Halo%20MobatMabet%20Store,%20saya%20mau%20pesan%20Blouse%20Viona%20Warna%20Biru" target="_blank" class="btn-whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i> Beli Sekarang / Pesan via WhatsApp
+                </a>
+                
+                <a href="https://t.me/mb2store" target="_blank" class="btn-telegram">
+                    <i class="fa-brands fa-telegram"></i> Lihat Katalog Lengkap di Telegram
+                </a>
+            </div>
+
+            <!-- Deskripsi Produk -->
+            <div class="description">
+                <h3>Deskripsi Produk</h3>
+                <p>Bahan adem, nyaman dipakai sehari-hari, kombinasi polo linen dan rayon motif berkualitas tinggi.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript untuk Interaktivitas Produk & Pergantian Gambar/Video Varian -->
+    <script>
+        const phoneNum = "6281262419674";
+
+        // Struktur data disesuaikan presisi dengan nama file di VS Code Anda
+        const productData = {
+            'Biru': {
+                title: 'Blouse atasan wanita viona bahan polo linen dan rayon motif - Biru',
+                images: ['assets/img/blouse-viona-blue.jpeg', 'assets/img/blouse-viona-blue2.jpeg'],
+                video: 'assets/vid/blouse-viona-blue.mp4'
+            },
+            'Dusty Pink': {
+                title: 'Blouse atasan wanita viona bahan polo linen dan rayon motif - Dusty Pink',
+                images: ['assets/img/blouse-viona-dustypink.jpeg', 'assets/img/blouse-viona-dustypink2.jpeg'],
+                video: 'assets/vid/blouse-viona-dustypink.mp4'
+            }
+        };
+
+        function selectColor(colorName) {
+            // Update tombol warna yang sedang dipilih
+            document.querySelectorAll('.color-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.innerText.trim() === colorName);
+            });
+
+            // Update Judul & Link WhatsApp
+            const data = productData[colorName];
+            document.getElementById('product-title').innerText = data.title;
+            
+            const waText = encodeURIComponent(`Halo MobatMabet Store, saya mau pesan ${data.title}`);
+            document.getElementById('wa-button').href = `https://wa.me/${phoneNum}?text=${waText}`;
+
+            // Reset dan buat ulang thumbnail gambar & video sesuai warna yang dipilih
+            const thumbsContainer = document.getElementById('thumbnails');
+            thumbsContainer.innerHTML = `
+                <img src="${data.images[0]}" class="thumb active" onclick="changeMedia('img', '${data.images[0]}', this)">
+                <img src="${data.images[1]}" class="thumb" onclick="changeMedia('img', '${data.images[1]}', this)">
+                <div class="thumb video-thumb" onclick="changeMedia('vid', '${data.video}', this)">
+                    <i class="fa-solid fa-play"></i> Video
+                </div>
+            `;
+
+            // Tampilkan foto utama warna terpilih secara otomatis
+            changeMedia('img', data.images[0], thumbsContainer.children[0]);
+        }
+
+        function changeMedia(type, src, element) {
+            const mainImg = document.getElementById('main-img');
+            const mainVideo = document.getElementById('main-video');
+            const videoSource = document.getElementById('video-source');
+
+            // Tandai border thumbnail yang sedang aktif
+            document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+            if (element) element.classList.add('active');
+
+            if (type === 'img') {
+                mainVideo.pause();
+                mainVideo.style.display = 'none';
+                mainImg.src = src;
+                mainImg.alt = document.getElementById('product-title').innerText;
+                mainImg.style.display = 'block';
+            } else if (type === 'vid') {
+                mainImg.style.display = 'none';
+                videoSource.src = src;
+                mainVideo.load();
+                mainVideo.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

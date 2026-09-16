@@ -1,0 +1,243 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f4f6f8;
+    color: #2c3e50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 950px;
+    width: 100%;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+/* Bagian Galeri Media */
+.product-gallery {
+    flex: 1;
+    min-width: 300px;
+}
+
+.main-display {
+    width: 100%;
+    height: 420px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #eef2f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-display img, 
+.main-display video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.thumbnail-list {
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.thumb {
+    width: 70px;
+    height: 70px;
+    border-radius: 8px;
+    cursor: pointer;
+    object-fit: cover;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.thumb:hover, 
+.thumb.active {
+    border-color: #007bff;
+    transform: translateY(-2px);
+}
+
+.video-thumb {
+    background: #1e293b;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    gap: 4px;
+}
+
+.video-thumb i {
+    font-size: 16px;
+}
+
+/* Bagian Detail Produk */
+.product-details {
+    flex: 1.2;
+    min-width: 300px;
+}
+
+.badge {
+    display: inline-block;
+    background: #e6f4ea;
+    color: #137333;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+}
+
+.price {
+    font-size: 26px;
+    font-weight: 700;
+    color: #e63946;
+    margin-bottom: 15px;
+}
+
+.meta-info {
+    display: flex;
+    gap: 15px;
+    font-size: 13px;
+    color: #555555;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #f0f0f0;
+    margin: 20px 0;
+}
+
+/* Variasi Warna */
+.variant-section label {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.color-options {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.color-btn {
+    padding: 8px 18px;
+    border: 1px solid #d1d5db;
+    background: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.color-btn.active, 
+.color-btn:hover {
+    border-color: #2563eb;
+    color: #2563eb;
+    background: #eff6ff;
+}
+
+/* Tombol Aksi (WhatsApp & Telegram) */
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.btn-whatsapp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: #25D366;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: background 0.3s ease;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
+}
+
+.btn-whatsapp:hover {
+    background-color: #1ebd56;
+}
+
+.btn-telegram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: #0088cc;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 136, 204, 0.2);
+}
+
+.btn-telegram:hover {
+    background-color: #0077b5;
+}
+
+/* Deskripsi Produk */
+.description h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.description p {
+    font-size: 14px;
+    color: #666666;
+    line-height: 1.6;
+}
+
+/* Penyesuaian Tampilan Layar HP */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    .container {
+        padding: 20px;
+        gap: 25px;
+    }
+    .main-display {
+        height: 320px;
+    }
+}
